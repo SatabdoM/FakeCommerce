@@ -26,7 +26,9 @@ public class Product extends BaseEntity {
 
     private String image;
 
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category", nullable = false)
+    private Categories category;
 
     private String rating;
 
@@ -37,7 +39,10 @@ public class Product extends BaseEntity {
 
 
 // Category itself is an entity
-// Sale on category
+
 // Relationship:
 // OneToMany: One category can have many products
+// category_id is a foreign key in the product table
+// category_id is the primary key in the category table
+
 

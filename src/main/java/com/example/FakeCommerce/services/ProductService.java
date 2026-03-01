@@ -24,7 +24,7 @@ public class ProductService {
                 .description(requestDto.getDescription())
                 .price(requestDto.getPrice())
                 .image(requestDto.getImage())
-                .category(requestDto.getCategory())
+                //.category(requestDto.getCategory())
                 .rating(requestDto.getRating())
                 .build();
         return productRepository.save(newProdict);
