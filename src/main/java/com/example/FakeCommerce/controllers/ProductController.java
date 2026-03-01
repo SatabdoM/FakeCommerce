@@ -30,8 +30,22 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
+    //Using PathVariable
     @GetMapping("/category/{category}")
     public List<Product> getProductsByCategory(@PathVariable String category) {
         return productService.getProductsByCategory(category);
     }
+
+    // Using RequestParam
+    @GetMapping("/search")
+    public List<Product> searchProductsByCategory(@RequestParam("category") String category) {
+        return productService.getProductsByCategory(category);
+    }
+
+    @GetMapping("/categories")
+    public List<String> getAllCategories() {
+        return productService.getAllCategories();
+    }
+
+
 }

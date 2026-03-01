@@ -15,11 +15,7 @@ import java.math.BigDecimal;
 @Builder
 @Entity
 @Table(name = "products")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Product extends BaseEntity {
     @Column(nullable = false)
     private String title;
 
@@ -38,3 +34,10 @@ public class Product {
 
 // The strategy comes from Strategy pattern
 // IDENTITY: Auto-incrementing field in the database. For Primary Keys
+
+
+// Category itself is an entity
+// Sale on category
+// Relationship:
+// OneToMany: One category can have many products
+
