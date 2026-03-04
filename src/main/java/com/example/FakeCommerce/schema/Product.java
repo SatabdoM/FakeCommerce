@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 
@@ -15,11 +14,7 @@ import java.math.BigDecimal;
 @Builder
 @Entity
 @Table(name = "products")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Product extends BaseEntity {
     @Column(nullable = false)
     private String title;
 
@@ -30,7 +25,9 @@ public class Product {
 
     private String image;
 
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category", nullable = false)
+    private Category category;
 
     private String rating;
 
@@ -38,3 +35,13 @@ public class Product {
 
 // The strategy comes from Strategy pattern
 // IDENTITY: Auto-incrementing field in the database. For Primary Keys
+
+
+// Category itself is an entity
+
+// Relationship:
+// OneToMany: One category can have many products
+// category_id is a foreign key in the product table
+// category_id is the primary key in the category table
+
+

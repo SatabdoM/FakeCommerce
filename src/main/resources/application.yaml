@@ -9,5 +9,10 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+  devtools:
+    restart:
+      enabled: true
+      poll-interval: 2000
+      quiet-period: 1000
 
