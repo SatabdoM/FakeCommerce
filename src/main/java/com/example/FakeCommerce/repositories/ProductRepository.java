@@ -16,8 +16,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT DISTINCT p.category FROM Product p")
     public List<String> findAllCategories();
 
-    @Query(nativeQuery = true,
-            value = "SELECT p.*, c.* FROM product p INNER JOIN category c ON p.category_id = c.id WHERE p.id = :id")
-    List<Product> findProductWithDetailsById(Long id);
+//    @Query(nativeQuery = true,
+//            value = "SELECT p.* ,c.name as categoryName  FROM products p INNER JOIN categories c ON p.category = c.id WHERE p.id = :id")
+    // For raw queries, JPA will not have context of the category name and will not be able to map it to the product object.
+    // Hence we can use Hybernate FETCH JOIN to fetch the category name along with the product details in a single query and map it to the product object.
+    @Query("SELECT p FROM Product p JOIN FETCH p.category WHERE p.id = :id")
+    public List<Product> findProductWithDetailsById(Long id);
 
 }

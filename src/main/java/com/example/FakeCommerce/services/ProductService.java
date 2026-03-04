@@ -37,13 +37,13 @@ public class ProductService {
     public List<GetProductWithDetailsResponseDto> getProductsWithDetailsById(Long id) {
         return productRepository.findProductWithDetailsById(id).stream().map(product ->
                 GetProductWithDetailsResponseDto.builder()
-                .title(product.getTitle())
-                .description(product.getDescription())
-                .price(product.getPrice())
-                .image(product.getImage())
-                .rating(product.getRating())
-                .categoryName(product.getCategory().getName())
-                .build()).collect(toList());
+                        .title(product.getTitle())
+                        .description(product.getDescription())
+                        .price(product.getPrice())
+                        .image(product.getImage())
+                        .rating(product.getRating())
+                        .categoryName(product.getCategory().getName())
+                        .build()).collect(toList());
     }
 
     public Product createProduct(CreateProductRequestDto requestDto) {

@@ -2,6 +2,7 @@ package com.example.FakeCommerce.controllers;
 
 import com.example.FakeCommerce.dtos.CreateProductRequestDto;
 import com.example.FakeCommerce.dtos.GetProductResponseDto;
+import com.example.FakeCommerce.dtos.GetProductWithDetailsResponseDto;
 import com.example.FakeCommerce.schema.Product;
 import com.example.FakeCommerce.services.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -31,8 +32,8 @@ public class ProductController {
     }
 
     @GetMapping("/{id}/details")
-    public GetProductResponseDto getProductWithDetailsById(@PathVariable Long id) {
-        return null;
+    public List<GetProductWithDetailsResponseDto> getProductWithDetailsById(@PathVariable Long id) {
+        return productService.getProductsWithDetailsById(id);
     }
 
     @DeleteMapping("/{id}")
