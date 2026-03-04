@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "categories")
-public class Categories extends BaseEntity {
+public class Category extends BaseEntity {
     @Column(nullable = false)
     private String name;
 }
