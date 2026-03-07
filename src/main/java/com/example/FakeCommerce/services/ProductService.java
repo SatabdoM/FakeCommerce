@@ -51,7 +51,7 @@ public class ProductService {
         System.out.println(requestDto.getCategoryId());
         System.out.println(categoryRepository.findById(requestDto.getCategoryId()));
 
-        Product newProdict = Product.builder()
+        Product newProduct = Product.builder()
                 .title(requestDto.getTitle())
                 .description(requestDto.getDescription())
                 .price(requestDto.getPrice())
@@ -59,7 +59,7 @@ public class ProductService {
                 .category(categoryService.getCategoryById(requestDto.getCategoryId()))
                 .rating(requestDto.getRating())
                 .build();
-        return productRepository.save(newProdict);
+        return productRepository.save(newProduct);
     }
 
     public void deleteProduct(Long id) {
