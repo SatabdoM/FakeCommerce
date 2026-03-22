@@ -10,6 +10,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  flyway:
+    enabled: true
+    locations: classpath:db/migrations
   devtools:
     restart:
       enabled: true
