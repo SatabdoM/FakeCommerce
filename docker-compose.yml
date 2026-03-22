@@ -1,0 +1,25 @@
+services:
+  app:
+    image: eclipse-temurin:21-jdk-jammy
+    container_name: fakecommerce-app
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fakecommerce
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    command: ./gradlew bootRun
+
+  mysql:
+    image: mysql:8
+    container_name: fakecommerce-db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: fakecommerce
+    ports:
+      - "3307:3306"
