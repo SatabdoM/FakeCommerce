@@ -23,6 +23,9 @@ public class BaseEntity {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedDate;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }
 //We do not want a table of base entity
 //We want to use the id field in the base entity for all the entities that extend it
